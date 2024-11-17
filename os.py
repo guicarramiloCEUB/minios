@@ -4,10 +4,9 @@ import getpass
 import random
 import string
 
-# Simulação de memória e usuários
 users = {}
 logged_user = None
-memory = [0] * 100  # Representação simples de memória (100 unidades)
+memory = [0] * 100
 
 def hash_password(password, salt=None):
     if salt is None:
@@ -59,7 +58,6 @@ def deallocate_memory(start, size):
         memory[i] = 0
 
 def execute_command(command):
-    # Simulação simples de PID
     pid = random.randint(1000, 9999)
     print(f"[PID {pid}] Executando: {command}")
     
