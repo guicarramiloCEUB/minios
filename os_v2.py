@@ -94,12 +94,8 @@ def create_file(file_path):
     print(f"Arquivo {file_path} criado.")
 
 def delete_file(file_path):
-    if file_path in file_ownership and file_ownership[file_path] != logged_user:
-        print("Permissão negada.")
-        return
     if os.path.exists(file_path):
         os.remove(file_path)
-        del file_ownership[file_path]
         print(f"Arquivo {file_path} removido.")
     else:
         print("Arquivo não encontrado.")
@@ -113,9 +109,6 @@ def create_directory(dir_path):
         print("Diretório já existe.")
 
 def delete_directory(dir_path, force=False):
-    if dir_path in file_ownership and file_ownership[dir_path] != logged_user:
-        print("Permissão negada.")
-        return
     if os.path.exists(dir_path):
         if force:
             subprocess.call(['rm', '-rf', dir_path])
@@ -125,7 +118,6 @@ def delete_directory(dir_path, force=False):
             except OSError:
                 print("Diretório não está vazio.")
                 return
-        del file_ownership[dir_path]
         print(f"Diretório {dir_path} removido.")
     else:
         print("Diretório não encontrado.")

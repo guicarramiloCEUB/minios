@@ -21,7 +21,7 @@ def create_user():
     fp.write(line)
     fp.close()
     print("Sign in complete!")
-    os.makedirs("os/users/"+ username)
+    os.makedirs("users/"+ username)
     return username, hashpass.hash_password(password)
 
 
